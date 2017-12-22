@@ -162,7 +162,7 @@ public class registerForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         hr.typeRequest = "register";
         hr.username = jTextUser.getText();
-        hr.username = jPasswordField1.getText();
+        hr.password = jPasswordField1.getText();
         hr.local = jTextLocal.getText();
         
         try {

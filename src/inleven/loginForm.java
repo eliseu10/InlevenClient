@@ -119,7 +119,7 @@ public class loginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         hr.typeRequest = "login";
         hr.username = jTextUser.getText();
-        hr.username = jPasswordField1.getText();
+        hr.password = jPasswordField1.getText();
         try {
             out.writeObject(hr);
             out.flush();
@@ -128,7 +128,7 @@ public class loginForm extends javax.swing.JFrame {
             Logger.getLogger(loginForm.class.getName()).log(Level.SEVERE, null, ex);
         }
 	if(hr.sucessLogin){
-            if(hr.patient == false){
+            if(hr.patient == true){
                 dispose();
                 MainMenuPatientForm patientMenu = new MainMenuPatientForm(out,in,hr);
                 patientMenu.setVisible(rootPaneCheckingEnabled);

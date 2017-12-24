@@ -5,17 +5,30 @@
  */
 package inleven;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author eliseu
  */
 public class HelpRequest extends javax.swing.JFrame {
 
+    private static ObjectOutputStream out = null;
+    private static ObjectInputStream in = null;
+    ActualState hr = null;
+    
     /**
      * Creates new form HelpRequest
      */
-    public HelpRequest() {
+    public HelpRequest(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
         initComponents();
+        HelpRequest.out = out;
+        HelpRequest.in = in;
+        this.hr = hr;
     }
 
     /**
@@ -29,18 +42,18 @@ public class HelpRequest extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        jShopping = new javax.swing.JCheckBox();
+        jCooking = new javax.swing.JCheckBox();
+        jCleaning = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        jMatosinhos = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        jPorto = new javax.swing.JCheckBox();
+        jVNGaia = new javax.swing.JCheckBox();
+        jGondomar = new javax.swing.JCheckBox();
+        jRioTinto = new javax.swing.JCheckBox();
         jCheckBox10 = new javax.swing.JCheckBox();
-        jCheckBox11 = new javax.swing.JCheckBox();
+        jHygiene = new javax.swing.JCheckBox();
         jBlogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,38 +65,38 @@ public class HelpRequest extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("Localization:");
 
-        jCheckBox1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox1.setText("Shopping");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        jShopping.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jShopping.setText("Shopping");
+        jShopping.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                jShoppingActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox2.setText("Cooking");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        jCooking.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jCooking.setText("Cooking");
+        jCooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                jCookingActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox3.setText("Cleaning");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        jCleaning.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jCleaning.setText("Cleaning");
+        jCleaning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                jCleaningActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel2.setText("Type of request:");
 
-        jCheckBox4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox4.setText("Matosinhos");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        jMatosinhos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMatosinhos.setText("Matosinhos");
+        jMatosinhos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                jMatosinhosActionPerformed(evt);
             }
         });
 
@@ -95,35 +108,35 @@ public class HelpRequest extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox6.setText("Porto");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        jPorto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jPorto.setText("Porto");
+        jPorto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                jPortoActionPerformed(evt);
             }
         });
 
-        jCheckBox7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox7.setText("V.N.Gaia");
-        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+        jVNGaia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jVNGaia.setText("V.N.Gaia");
+        jVNGaia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox7ActionPerformed(evt);
+                jVNGaiaActionPerformed(evt);
             }
         });
 
-        jCheckBox8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox8.setText("Gondomar");
-        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+        jGondomar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jGondomar.setText("Gondomar");
+        jGondomar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox8ActionPerformed(evt);
+                jGondomarActionPerformed(evt);
             }
         });
 
-        jCheckBox9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox9.setText("Rio Tinto");
-        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
+        jRioTinto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jRioTinto.setText("Rio Tinto");
+        jRioTinto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox9ActionPerformed(evt);
+                jRioTintoActionPerformed(evt);
             }
         });
 
@@ -135,16 +148,21 @@ public class HelpRequest extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox11.setText("Shopping");
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+        jHygiene.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jHygiene.setText("Hygiene");
+        jHygiene.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
+                jHygieneActionPerformed(evt);
             }
         });
 
         jBlogin.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jBlogin.setText("Confirm");
+        jBlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBloginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,26 +178,26 @@ public class HelpRequest extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox6)
+                            .addComponent(jShopping)
+                            .addComponent(jPorto)
                             .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox7)
+                            .addComponent(jVNGaia)
                             .addComponent(jBlogin))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jCheckBox4)
+                                .addComponent(jMatosinhos)
                                 .addGap(18, 18, 18)
-                                .addComponent(jCheckBox8))
-                            .addComponent(jCheckBox9)
+                                .addComponent(jGondomar))
+                            .addComponent(jRioTinto)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox2)
-                                    .addComponent(jCheckBox11))
+                                    .addComponent(jCooking)
+                                    .addComponent(jHygiene))
                                 .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBox10)
-                                    .addComponent(jCheckBox3))))))
+                                    .addComponent(jCleaning))))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -191,25 +209,25 @@ public class HelpRequest extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3))
+                    .addComponent(jShopping)
+                    .addComponent(jCooking)
+                    .addComponent(jCleaning))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBox5)
                     .addComponent(jCheckBox10)
-                    .addComponent(jCheckBox11))
+                    .addComponent(jHygiene))
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox8))
+                    .addComponent(jPorto)
+                    .addComponent(jMatosinhos)
+                    .addComponent(jGondomar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jCheckBox9))
+                    .addComponent(jVNGaia)
+                    .addComponent(jRioTinto))
                 .addGap(18, 18, 18)
                 .addComponent(jBlogin)
                 .addContainerGap(63, Short.MAX_VALUE))
@@ -218,49 +236,76 @@ public class HelpRequest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void jShoppingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShoppingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        hr.helpType = "Shopping";
+    }//GEN-LAST:event_jShoppingActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void jCookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCookingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+        hr.helpType = "Cooking";
+    }//GEN-LAST:event_jCookingActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void jCleaningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCleaningActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+        hr.helpType = "cleaning";
+    }//GEN-LAST:event_jCleaningActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void jMatosinhosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMatosinhosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+        hr.local = "Matosinhos";
+    }//GEN-LAST:event_jMatosinhosActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void jPortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPortoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+        hr.local = "Porto";
+    }//GEN-LAST:event_jPortoActionPerformed
 
-    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
+    private void jVNGaiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVNGaiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox7ActionPerformed
+        hr.local = "VNGaia";
+    }//GEN-LAST:event_jVNGaiaActionPerformed
 
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+    private void jGondomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGondomarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
+        hr.local = "Gondomar";
+    }//GEN-LAST:event_jGondomarActionPerformed
 
-    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
+    private void jRioTintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRioTintoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox9ActionPerformed
+        hr.local = "Rio Tinto";
+    }//GEN-LAST:event_jRioTintoActionPerformed
 
     private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox10ActionPerformed
 
-    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+    private void jHygieneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHygieneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox11ActionPerformed
+        hr.helpType = "Hygiene";
+    }//GEN-LAST:event_jHygieneActionPerformed
+
+    private void jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloginActionPerformed
+        // TODO add your handling code here:
+        hr.typeRequest = "helprequest";
+        if((hr.local == null) || (hr.helpType == null)){
+            //do nothing
+        }else{
+            try {
+                out.writeObject(hr);
+                hr = (ActualState) in.readObject();
+            } catch (IOException | ClassNotFoundException ex) {
+                Logger.getLogger(HelpRequest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            dispose();
+            MenuPatient patientMenu = new MenuPatient(out,in,hr);
+            patientMenu.setVisible(rootPaneCheckingEnabled);
+        }
+    }//GEN-LAST:event_jBloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,19 +338,19 @@ public class HelpRequest extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBlogin;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JCheckBox jCleaning;
+    private javax.swing.JCheckBox jCooking;
+    private javax.swing.JCheckBox jGondomar;
+    private javax.swing.JCheckBox jHygiene;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JCheckBox jMatosinhos;
+    private javax.swing.JCheckBox jPorto;
+    private javax.swing.JCheckBox jRioTinto;
+    private javax.swing.JCheckBox jShopping;
+    private javax.swing.JCheckBox jVNGaia;
     // End of variables declaration//GEN-END:variables
 }

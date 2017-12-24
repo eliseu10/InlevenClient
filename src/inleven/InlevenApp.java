@@ -38,7 +38,7 @@ public class InlevenApp {
 		}
 
 		ActualState hr = new ActualState();
-                inicialForm init = new inicialForm(out,in,hr);
+                MenuInicial init = new MenuInicial(out,in,hr);
                 init.setVisible(true);
 
     }

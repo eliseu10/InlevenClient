@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author up201303855
  */
-public class loginForm extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     private static ObjectOutputStream out = null;
     private static ObjectInputStream in = null;
@@ -24,10 +24,10 @@ public class loginForm extends javax.swing.JFrame {
     /**
      * Creates new form loginForm
      */
-    public loginForm(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
+    public Login(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
         initComponents();
-        loginForm.out = out;
-        loginForm.in = in;
+        Login.out = out;
+        Login.in = in;
         this.hr = hr;
     }
 
@@ -49,8 +49,8 @@ public class loginForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(362, 350));
-        setSize(new java.awt.Dimension(362, 350));
+        setPreferredSize(new java.awt.Dimension(360, 338));
+        setSize(new java.awt.Dimension(360, 338));
 
         jBlogin.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jBlogin.setText("Login");
@@ -92,7 +92,7 @@ public class loginForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +109,7 @@ public class loginForm extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBlogin)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,20 +122,19 @@ public class loginForm extends javax.swing.JFrame {
         hr.password = jPasswordField1.getText();
         try {
             out.writeObject(hr);
-            out.flush();
             hr = (ActualState) in.readObject();
         } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(loginForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 	if(hr.sucessLogin){
             if(hr.patient == true){
                 dispose();
-                MainMenuPatientForm patientMenu = new MainMenuPatientForm(out,in,hr);
+                MenuPatient patientMenu = new MenuPatient(out,in,hr);
                 patientMenu.setVisible(rootPaneCheckingEnabled);
             }
             if(hr.patient == false){
                 dispose();
-                MainMenuVolunteer volunteerMenu = new MainMenuVolunteer(out,in,hr);
+                MenuVolunteer volunteerMenu = new MenuVolunteer(out,in,hr);
                 volunteerMenu.setVisible(rootPaneCheckingEnabled);
             }
 
@@ -159,14 +158,15 @@ public class loginForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
     }

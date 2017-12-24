@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
  *
  * @author up201303855
  */
-public class inicialForm extends javax.swing.JFrame {
+public class MenuInicial extends javax.swing.JFrame {
 
     private static ObjectOutputStream out = null;
     private static ObjectInputStream in = null;
@@ -24,10 +24,10 @@ public class inicialForm extends javax.swing.JFrame {
      * @param in
      * @param hr
      */
-    public inicialForm(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
+    public MenuInicial(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
         initComponents();
-        inicialForm.out = out;
-        inicialForm.in = in;
+        MenuInicial.out = out;
+        MenuInicial.in = in;
         this.hr = hr;
     }
 
@@ -46,8 +46,9 @@ public class inicialForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
+        setPreferredSize(new java.awt.Dimension(360, 338));
         setResizable(false);
-        setSize(new java.awt.Dimension(362, 350));
+        setSize(new java.awt.Dimension(360, 338));
 
         jBLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jBLogin.setLabel("Login");
@@ -91,7 +92,7 @@ public class inicialForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBRegister)
                     .addComponent(jBLogin))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,14 +101,14 @@ public class inicialForm extends javax.swing.JFrame {
     private void jBLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLoginActionPerformed
         // TODO add your handling code here:
         dispose();
-        loginForm login = new loginForm(out,in,hr);
+        Login login = new Login(out,in,hr);
         login.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jBLoginActionPerformed
 
     private void jBRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegisterActionPerformed
         // TODO add your handling code here:
         dispose();
-        registerForm register = new registerForm(out,in,hr);
+        Register register = new Register(out,in,hr);
         register.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jBRegisterActionPerformed
 
@@ -128,14 +129,15 @@ public class inicialForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(inicialForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(inicialForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(inicialForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(inicialForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
     }

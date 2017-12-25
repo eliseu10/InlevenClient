@@ -50,6 +50,7 @@ public class MenuVolunteer extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(362, 338));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel3.setText("MAIN MENU");
@@ -160,6 +161,7 @@ public class MenuVolunteer extends javax.swing.JFrame {
         hr.typeRequest = "setvolunteer";
         try {
             out.writeObject(hr);
+            out.flush();
             hr = (ActualState) in.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);
@@ -175,9 +177,11 @@ public class MenuVolunteer extends javax.swing.JFrame {
         hr.typeRequest = "shutdown";
         try {
             out.writeObject(hr);
-        } catch (IOException ex) {
-            Logger.getLogger(MenuPatient.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            out.flush();
+            hr = (ActualState) in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);
+        }  
         dispose();
     }//GEN-LAST:event_jExitActionPerformed
 
@@ -186,6 +190,7 @@ public class MenuVolunteer extends javax.swing.JFrame {
         try {
             hr.typeRequest = "verifyhelp";
             out.writeObject(hr);
+            out.flush();
             hr = (ActualState) in.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);

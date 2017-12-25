@@ -55,6 +55,7 @@ public class HelpRequest extends javax.swing.JFrame {
         jCheckBox10 = new javax.swing.JCheckBox();
         jHygiene = new javax.swing.JCheckBox();
         jBlogin = new javax.swing.JButton();
+        jExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(362, 350));
@@ -156,11 +157,19 @@ public class HelpRequest extends javax.swing.JFrame {
             }
         });
 
-        jBlogin.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jBlogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jBlogin.setText("Confirm");
         jBlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBloginActionPerformed(evt);
+            }
+        });
+
+        jExit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jExit.setText("Back");
+        jExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jExitActionPerformed(evt);
             }
         });
 
@@ -169,36 +178,44 @@ public class HelpRequest extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jShopping)
-                            .addComponent(jPorto)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jVNGaia)
-                            .addComponent(jBlogin))
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jMatosinhos)
-                                .addGap(18, 18, 18)
-                                .addComponent(jGondomar))
-                            .addComponent(jRioTinto)
-                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCooking)
-                                    .addComponent(jHygiene))
-                                .addGap(31, 31, 31)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jShopping)
+                                    .addComponent(jPorto)
+                                    .addComponent(jCheckBox5)
+                                    .addComponent(jVNGaia))
+                                .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox10)
-                                    .addComponent(jCleaning))))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jMatosinhos)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jGondomar))
+                                    .addComponent(jRioTinto)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCooking)
+                                            .addComponent(jHygiene))
+                                        .addGap(31, 31, 31)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox10)
+                                            .addComponent(jCleaning))))
+                                .addGap(0, 28, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jBlogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jExit, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,9 +245,11 @@ public class HelpRequest extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jVNGaia)
                     .addComponent(jRioTinto))
-                .addGap(18, 18, 18)
-                .addComponent(jBlogin)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jExit, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBlogin))
+                .addContainerGap())
         );
 
         pack();
@@ -297,6 +316,7 @@ public class HelpRequest extends javax.swing.JFrame {
         }else{
             try {
                 out.writeObject(hr);
+                out.flush();
                 hr = (ActualState) in.readObject();
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(HelpRequest.class.getName()).log(Level.SEVERE, null, ex);
@@ -306,6 +326,13 @@ public class HelpRequest extends javax.swing.JFrame {
             patientMenu.setVisible(rootPaneCheckingEnabled);
         }
     }//GEN-LAST:event_jBloginActionPerformed
+
+    private void jExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        MenuPatient patientMenu = new MenuPatient(out, in, hr);
+        patientMenu.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,6 +369,7 @@ public class HelpRequest extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCleaning;
     private javax.swing.JCheckBox jCooking;
+    private javax.swing.JButton jExit;
     private javax.swing.JCheckBox jGondomar;
     private javax.swing.JCheckBox jHygiene;
     private javax.swing.JLabel jLabel1;

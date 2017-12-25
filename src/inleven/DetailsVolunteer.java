@@ -13,29 +13,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author eliseu
  */
-public class ListHelpPatient extends javax.swing.JFrame {
+public class DetailsVolunteer extends javax.swing.JFrame {
     private static ObjectOutputStream out = null;
     private static ObjectInputStream in = null;
     ActualState hr = null;
     /**
-     * Creates new form ListHelpPatient
+     * Creates new form DetailsVolunteer
      */
-    public ListHelpPatient(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
+    public DetailsVolunteer(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
         initComponents();
-        ListHelpPatient.out = out;
-        ListHelpPatient.in = in;
+        DetailsVolunteer.out = out;
+        DetailsVolunteer.in = in;
         this.hr = hr;
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        for(int i = 0; i < hr.requestState.length; i++){
-            model.addRow(hr.requestState[i]);
+        for(int i = 0; i < hr.VolunteerContacts.length; i++){
+            model.addRow(hr.VolunteerContacts[i]);
         }
         
-        for (int i = 0; i < hr.requestState.length; i++) {
-            model.setValueAt(hr.requestState[i][0], i, 0);
-            model.setValueAt(hr.requestState[i][1], i, 1);
-            model.setValueAt(hr.requestState[i][2], i, 2);
+        for (int i = 0; i < hr.VolunteerContacts.length; i++) {
+            model.setValueAt(hr.VolunteerContacts[i][0], i, 0);
+            model.setValueAt(hr.VolunteerContacts[i][1], i, 1);
         }
     }
 
@@ -68,11 +67,11 @@ public class ListHelpPatient extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Help Type", "Localization", "Volunteer"
+                "Volunteer name", "Phone number"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -88,7 +87,7 @@ public class ListHelpPatient extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -99,9 +98,9 @@ public class ListHelpPatient extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jExit)
-                .addContainerGap())
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,13 +130,13 @@ public class ListHelpPatient extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListHelpPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListHelpPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListHelpPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListHelpPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DetailsVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

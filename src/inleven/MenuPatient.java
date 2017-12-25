@@ -179,6 +179,7 @@ public class MenuPatient extends javax.swing.JFrame {
         try {
             hr.typeRequest = "verifyhelp";
             out.writeObject(hr);
+            out.flush();
             hr = (ActualState) in.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);
@@ -197,7 +198,9 @@ public class MenuPatient extends javax.swing.JFrame {
         hr.typeRequest = "shutdown";
         try {
             out.writeObject(hr);
-        } catch (IOException ex) {
+            out.flush();
+            hr = (ActualState) in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(MenuPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
         dispose();
@@ -205,6 +208,17 @@ public class MenuPatient extends javax.swing.JFrame {
 
     private void jVolunteerDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVolunteerDetailsActionPerformed
         // TODO add your handling code here:
+        try {
+            hr.typeRequest = "volunteerdetails";
+            out.writeObject(hr);
+            out.flush();
+            hr = (ActualState) in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dispose();
+        DetailsVolunteer details = new DetailsVolunteer(out, in, hr);
+        details.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jVolunteerDetailsActionPerformed
 
     /**

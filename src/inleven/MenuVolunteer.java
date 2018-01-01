@@ -169,6 +169,17 @@ public class MenuVolunteer extends javax.swing.JFrame {
 
     private void jRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRankingActionPerformed
         // TODO add your handling code here:
+        try {
+            hr.typeRequest = "checkranking";
+            out.writeObject(hr);
+            out.flush();
+            hr = (ActualState) in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        dispose();
+        Ranking rank = new Ranking(out, in, hr);
+        rank.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jRankingActionPerformed
 
     private void jExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitActionPerformed

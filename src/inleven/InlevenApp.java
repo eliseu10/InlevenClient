@@ -27,10 +27,12 @@ public class InlevenApp {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         		// TODO Auto-generated method stub
-		int ServerPort = 5050;
+		int ServerPort = 5453;
+                //InetAddress ServerIPaddr = InetAddress.getByName("gnomo.fe.up.pt");
 		InetAddress ServerIPaddr = InetAddress.getByName("localhost");
 		sockConn = new Socket(ServerIPaddr, ServerPort);
-		
+		System.out.println("Socket created with sucess.");
+                
 		try {
 			out = new ObjectOutputStream(sockConn.getOutputStream());
 			in = new ObjectInputStream(sockConn.getInputStream());

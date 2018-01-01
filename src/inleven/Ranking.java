@@ -13,31 +13,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author eliseu
  */
-public class ListHelpVolunteer extends javax.swing.JFrame {
-
+public class Ranking extends javax.swing.JFrame {
     private static ObjectOutputStream out = null;
     private static ObjectInputStream in = null;
     ActualState hr = null;
     /**
-     * Creates new form ListHelpRequest
+     * Creates new form Ranking
      */
-    public ListHelpVolunteer(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
+    public Ranking(ObjectOutputStream out, ObjectInputStream in, ActualState hr) {
         initComponents();
-        ListHelpVolunteer.out = out;
-        ListHelpVolunteer.in = in;
+        Ranking.out = out;
+        Ranking.in = in;
         this.hr = hr;
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        for(int i = 0; i < hr.requestState.length; i++){
-            model.addRow(hr.requestState[i]);
+        for(int i = 0; i < hr.ranking.length; i++){
+            model.addRow(hr.ranking[i]);
         }
         
-        for (int i = 0; i < hr.requestState.length; i++) {
-            model.setValueAt(hr.requestState[i][0], i, 0);
-            model.setValueAt(hr.requestState[i][1], i, 1);
-            model.setValueAt(hr.requestState[i][2], i, 2);
-            model.setValueAt(hr.requestState[i][3], i, 3);
+        for (int i = 0; i < hr.ranking.length; i++) {
+            model.setValueAt(hr.ranking[i][0], i, 0);
+            model.setValueAt(hr.ranking[i][1], i, 1);
         }
     }
 
@@ -52,10 +49,11 @@ public class ListHelpVolunteer extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jExit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(362, 360));
         setSize(new java.awt.Dimension(362, 338));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -63,11 +61,11 @@ public class ListHelpVolunteer extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Help Type", "Localization", "Patient"
+                "Username", "Classification"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -75,6 +73,9 @@ public class ListHelpVolunteer extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel3.setText("RANKING");
 
         jExit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jExit.setText("Back");
@@ -84,13 +85,14 @@ public class ListHelpVolunteer extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel3.setText("REQUESTS");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,19 +101,15 @@ public class ListHelpVolunteer extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jExit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 19, Short.MAX_VALUE)
                 .addComponent(jExit)
                 .addContainerGap())
         );
@@ -143,18 +141,16 @@ public class ListHelpVolunteer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListHelpVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ranking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListHelpVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ranking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListHelpVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ranking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListHelpVolunteer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ranking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

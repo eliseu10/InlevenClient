@@ -36,6 +36,7 @@ public class ListHelpPatient extends javax.swing.JFrame {
             model.setValueAt(hr.requestState[i][0], i, 0);
             model.setValueAt(hr.requestState[i][1], i, 1);
             model.setValueAt(hr.requestState[i][2], i, 2);
+            model.setValueAt(hr.requestState[i][3], i, 3);
         }
     }
 
@@ -69,11 +70,11 @@ public class ListHelpPatient extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Help Type", "Localization", "Volunteer"
+                "ID", "Help Type", "Localization", "Volunteer"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

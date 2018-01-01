@@ -142,7 +142,7 @@ public class HelpRequest extends javax.swing.JFrame {
         });
 
         jCheckBox10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jCheckBox10.setText("Shopping");
+        jCheckBox10.setText("Friendship");
         jCheckBox10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox10ActionPerformed(evt);
@@ -266,7 +266,7 @@ public class HelpRequest extends javax.swing.JFrame {
 
     private void jCleaningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCleaningActionPerformed
         // TODO add your handling code here:
-        hr.helpType = "cleaning";
+        hr.helpType = "Cleaning";
     }//GEN-LAST:event_jCleaningActionPerformed
 
     private void jMatosinhosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMatosinhosActionPerformed
@@ -276,6 +276,7 @@ public class HelpRequest extends javax.swing.JFrame {
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
         // TODO add your handling code here:
+        hr.local = "Mobility";
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void jPortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPortoActionPerformed
@@ -300,6 +301,7 @@ public class HelpRequest extends javax.swing.JFrame {
 
     private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
         // TODO add your handling code here:
+        hr.helpType = "Friendship";
     }//GEN-LAST:event_jCheckBox10ActionPerformed
 
     private void jHygieneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHygieneActionPerformed

@@ -5,8 +5,11 @@
  */
 package inleven;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -43,12 +46,12 @@ public class MenuInicial extends javax.swing.JFrame {
         jBLogin = new javax.swing.JButton();
         jBRegister = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(254, 254, 254));
-        setPreferredSize(new java.awt.Dimension(360, 338));
         setResizable(false);
-        setSize(new java.awt.Dimension(360, 338));
+        setSize(new java.awt.Dimension(362, 338));
 
         jBLogin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jBLogin.setLabel("Login");
@@ -67,23 +70,32 @@ public class MenuInicial extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(254, 254, 254));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inleven/inleven.jpg"))); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inleven/inleven.jpeg"))); // NOI18N
+
+        jExit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jExit.setText("Exit");
+        jExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel1)
-                        .addGap(0, 45, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jBLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBRegister)))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel1)
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBRegister)
+                .addGap(38, 38, 38)
+                .addComponent(jExit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -91,8 +103,9 @@ public class MenuInicial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jExit)
                     .addComponent(jBLogin)
                     .addComponent(jBRegister))
                 .addContainerGap())
@@ -114,6 +127,19 @@ public class MenuInicial extends javax.swing.JFrame {
         Register register = new Register(out,in,hr);
         register.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jBRegisterActionPerformed
+
+    private void jExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitActionPerformed
+        // TODO add your handling code here:
+        hr.typeRequest = "shutdown";
+        try {
+            out.writeObject(hr);
+            out.flush();
+            hr = (ActualState) in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(MenuVolunteer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dispose();
+    }//GEN-LAST:event_jExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +174,7 @@ public class MenuInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBLogin;
     private javax.swing.JButton jBRegister;
+    private javax.swing.JButton jExit;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
